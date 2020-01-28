@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Chicken Nugget</string>
+    <string name="welcome_msg">Welcome to the Chicken App</string>
+    <string name="chicken_joke">Why did the chicken go to Burger King?</string>
+    <string name="why">Why?</string>
+    <string name="punchline_intro">To see a</string>
+    <string name="jokes">Jokes</string>
+    <string name="recipes">Recipes</string>
+    <string name="products">Products</string>
+    <string name="jokes_message">You chose Jokes</string>
+    <string name="recipes_message">You chose Recipes</string>
+    <string name="products_message">You chose Products</string>
+    <string name="joke1">joke1</string>
+    <string name="input_new_product">Input New Product</string>
+    <array name="product_images">
+        <item>@drawable/popeyes</item>
+        <item>@drawable/kfc</item>
+        <item>@drawable/chickfila</item>
+    </array>
+</resources>
