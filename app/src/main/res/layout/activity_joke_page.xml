@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
         tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
@@ -49,7 +50,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/joke1"
                 app:srcCompat="@drawable/joke3" />
+
         </LinearLayout>
     </ScrollView>
+
+    <EditText
+        android:id="@+id/website_editText"
+        android:layout_width="234dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:text="@string/editText_uri"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/website_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:onClick="openWebsite"
+        android:text="@string/button_uri"
+        app:layout_constraintBaseline_toBaselineOf="@+id/website_editText"
+        app:layout_constraintStart_toEndOf="@id/website_editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

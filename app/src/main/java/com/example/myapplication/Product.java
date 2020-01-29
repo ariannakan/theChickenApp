@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class Product {
 
-    private final int imageResource;
+    private int imageResource;
     private String name;
     private String info;
 
@@ -30,5 +30,9 @@ public class Product {
 
     public int getImageResource(){
         return imageResource;
+    }
+
+    public void setImageResource(int image){
+        this.imageResource = image;
     }
 }

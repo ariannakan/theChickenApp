@@ -12,9 +12,12 @@
     <string name="products_message">You chose Products</string>
     <string name="joke1">joke1</string>
     <string name="input_new_product">Input New Product</string>
-    <array name="product_images">
-        <item>@drawable/popeyes</item>
-        <item>@drawable/kfc</item>
-        <item>@drawable/chickfila</item>
-    </array>
+
+    <string name="editText_uri">www.google.com/chicken_jokes</string>
+    <string name="button_uri">Search</string>
+    <string name="editText_loc">GoldenGateBridge</string>
+    <string name="button_loc">Open Location</string>
+    <string name="editText_share">I love Chicken Nuggets</string>
+    <string name="button_share">Share This Text</string>
+
 </resources>

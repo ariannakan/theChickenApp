@@ -1,69 +1,77 @@
 package com.example.myapplication;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.ProductViewHolder> {
 
-    class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public ProductViewHolder(View itemView, ProductListAdaptor adapter) {
+    class ProductViewHolder extends RecyclerView.ViewHolder{    //implements View.OnClickListener
+        CardView cv;
+        TextView productName;
+        TextView productInfo;
+        ImageView productImage;
+
+        public ProductViewHolder(View itemView) {
             super(itemView);
-            productItemView = itemView.findViewById(R.id.product);
-            this.pAdaptor = adapter;
-            itemView.setOnClickListener(this);
+            cv = itemView.findViewById(R.id.cv);
+            productName = itemView.findViewById(R.id.productName);
+            productInfo = itemView.findViewById(R.id.productInfo);
+            productImage = itemView.findViewById(R.id.productImage);
+//            itemView.setOnClickListener(this);
         }
-        public final TextView productItemView;
-        final ProductListAdaptor pAdaptor;
 
-        @Override
-        public void onClick(View v) {
-            // Get the position of the item that was clicked.
-            int pPosition = getLayoutPosition();
-
-            // Use that to access the affected item in productList.
-            String element = productList.get(pPosition);
-
-            // Change the product in the productList.
-            productList.set(pPosition, "Clicked! " + element);
-
-            // Notify the adapter, that the data has changed so it can
-            // update the RecyclerView to display the data.
-            pAdaptor.notifyDataSetChanged();
-        }
+//        @Override
+//        public void onClick(View v) {
+//            // Get the position of the item that was clicked.
+//            int pPosition = getLayoutPosition();
+//
+//            // Use that to access the affected item in productList.
+//            String element = productList.get(pPosition);
+//
+//            // Change the product in the productList.
+//            productList.set(pPosition, "Clicked! " + element);
+//
+//            // Notify the adapter, that the data has changed so it can
+//            // update the RecyclerView to display the data.
+//            pAdaptor.notifyDataSetChanged();
+//        }
     }
 
-    private final LinkedList<String> productList;
-    private LayoutInflater pInflater;
+    private final ArrayList<Product> productList;
 
-    public ProductListAdaptor(Context context,
-                              LinkedList<String> productList) {
-        pInflater = LayoutInflater.from(context);
+    public ProductListAdaptor(ArrayList<Product> productList) {
+        //pInflater = LayoutInflater.from(context);
         this.productList = productList;
     }
 
     @Override
-    public ProductViewHolder onCreateViewHolder(ViewGroup parent,
-                                             int viewType) {
-        View pItemView = pInflater.inflate(R.layout.productlist_item,
-                parent, false);
-        return new ProductViewHolder(pItemView, this);
+    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View pItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.productlist_item, parent,false);
+        return new ProductViewHolder(pItemView);
     }
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
-        String pCurrent = productList.get(position);
-        holder.productItemView.setText(pCurrent);
+        holder.productName.setText(productList.get(position).getName());
+        holder.productInfo.setText(productList.get(position).getInfo());
+        holder.productImage.setImageResource(productList.get(position).getImageResource());
     }
 
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView rv){
+        super.onAttachedToRecyclerView(rv);
     }
 }

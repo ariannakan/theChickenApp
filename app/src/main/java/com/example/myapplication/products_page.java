@@ -5,53 +5,60 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class products_page extends AppCompatActivity {
 
-    private final LinkedList<String> productList = new LinkedList<>();
-    private RecyclerView pRecyclerView;
-    private ProductListAdaptor pAdapter;
+    private ArrayList<Product> productList;
+    private RecyclerView rv;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_page);
-        productList.addLast("Popeyes");
-        productList.addLast("KFC");
-        productList.addLast("Chick-Fil-A");
 
-        // Get a handle to the RecyclerView.
-        pRecyclerView = findViewById(R.id.recyclerView);
+        rv = findViewById(R.id.recyclerView);
 
-        // Create an adapter and supply the data to be displayed.
-        pAdapter = new ProductListAdaptor(this, productList);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
 
-        // Connect the adapter with the RecyclerView.
-        pRecyclerView.setAdapter(pAdapter);
+        initializeData();
+        initializeAdapter();
+    }
 
-        // Give the RecyclerView a default layout manager.
-        pRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    // this method creates an Arraylist that has three Product objects
+    private void initializeData(){
+        productList = new ArrayList<>();
+        productList.add(new Product("Popeyes", "Popeyes.com", R.drawable.popeyes));
+        productList.add(new Product("KFC", "KFC.com", R.drawable.kfc));
+        productList.add(new Product("Chick-Fil-A", "Chick-fil-a.com", R.drawable.chickfila));
+        productList.add(new Product("McDonald's", "McDonalds.com", R.drawable.mcd));
+    }
 
+    private void initializeAdapter(){
+        ProductListAdaptor pAdapter = new ProductListAdaptor(productList);
+        rv.setAdapter(pAdapter);
     }
 
     public void addProduct(View view) {
         int pListSize = productList.size();
 
         EditText productName = findViewById(R.id.newProductInput);
-        String product = productName.getText().toString();
+        String name = productName.getText().toString();
 
-        // Add a new word to the wordList.
-        productList.addLast(product);
+        // Add a new product to the list.
+        productList.add(new Product(name, "None", 0));
         // Notify the adapter, that the data has changed.
-        pRecyclerView.getAdapter().notifyItemInserted(pListSize);
+        rv.getAdapter().notifyItemInserted(pListSize);
         // Scroll to the bottom.
-        pRecyclerView.smoothScrollToPosition(pListSize);
+        rv.smoothScrollToPosition(pListSize);
     }
 
 }
