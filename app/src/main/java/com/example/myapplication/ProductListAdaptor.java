@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +20,24 @@ public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.
         TextView productInfo;
         ImageView productImage;
 
-        public ProductViewHolder(View itemView) {
+        public ProductViewHolder(final View itemView) {
             super(itemView);
             cv = itemView.findViewById(R.id.cv);
             productName = itemView.findViewById(R.id.productName);
-            productInfo = itemView.findViewById(R.id.productInfo);
+            //productInfo = itemView.findViewById(R.id.productInfo);
             productImage = itemView.findViewById(R.id.productImage);
 //            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Product currentProduct = productList.get(getAdapterPosition());
+                    Intent detailIntent = new Intent(itemView.getContext(), ProductDetail.class);
+                    detailIntent.putExtra("name", currentProduct.getName());
+                    detailIntent.putExtra("image_resource", currentProduct.getImageResource());
+                    detailIntent.putExtra("weblink", currentProduct.getInfo());
+                    itemView.getContext().startActivity(detailIntent);
+                }
+            });
         }
 
 //        @Override
@@ -61,7 +73,7 @@ public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         holder.productName.setText(productList.get(position).getName());
-        holder.productInfo.setText(productList.get(position).getInfo());
+        //holder.productInfo.setText(productList.get(position).getInfo());
         holder.productImage.setImageResource(productList.get(position).getImageResource());
     }
 
