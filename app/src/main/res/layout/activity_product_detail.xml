@@ -7,7 +7,7 @@
     <RelativeLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="16dp"
         tools:context=".ProductDetail">
 
@@ -37,6 +37,17 @@
             android:textSize="35sp"
             android:layout_toEndOf="@+id/detail_productImage" />
 
+        <ImageButton
+            android:id="@+id/detail_maps"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="viewMap"
+            android:src="@drawable/ic_map"
+            android:focusable="true"/>
+
         <TextView
             android:id="@+id/detail_productLink"
             android:layout_width="wrap_content"
@@ -51,15 +62,24 @@
 
         <TextView
             android:id="@+id/detail_productDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_centerInParent="true"
-            android:layout_below="@id/detail_productLink"
-            android:text="Description / Menu here"
+            android:layout_below="@id/detail_productImage"
             android:textSize="20sp"
-            android:padding="16dp"
-            android:textColorLink="@color/cardview_dark_background" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            android:fontWeight="200" />
+
+        <WebView
+            android:id="@+id/detail_webview_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/detail_productDesc"
+            android:layout_alignParentLeft="true"
+            />
 
     </RelativeLayout>
 </ScrollView>

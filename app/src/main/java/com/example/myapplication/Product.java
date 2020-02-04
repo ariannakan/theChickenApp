@@ -4,11 +4,13 @@ public class Product {
 
     private int imageResource;
     private String name;
-    private String info;
+    private String desc;
+    private String menu;
 
-    public Product(String name, String info, int imageResource){
+    public Product(String name, String menu, String desc, int imageResource){
         this.name = name;
-        this.info = info;
+        this.menu = menu;
+        this.desc = desc;
         this.imageResource = imageResource;
     }
 
@@ -20,13 +22,17 @@ public class Product {
         this.name = name;
     }
 
-    public String getInfo(){
-        return info;
+    public String getMenu(){ return menu; }
+
+    public void setMenu(String menu){
+        this.menu = menu;
     }
 
-    public void setInfo() {
-        this.info = info;
+    public String getDesc(){
+        return desc;
     }
+
+    public void setDesc() { this.desc = desc; }
 
     public int getImageResource(){
         return imageResource;

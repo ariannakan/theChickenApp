@@ -17,7 +17,7 @@ public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.
     class ProductViewHolder extends RecyclerView.ViewHolder{    //implements View.OnClickListener
         CardView cv;
         TextView productName;
-        TextView productInfo;
+        TextView productDesc;
         ImageView productImage;
 
         public ProductViewHolder(final View itemView) {
@@ -34,7 +34,8 @@ public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.
                     Intent detailIntent = new Intent(itemView.getContext(), ProductDetail.class);
                     detailIntent.putExtra("name", currentProduct.getName());
                     detailIntent.putExtra("image_resource", currentProduct.getImageResource());
-                    detailIntent.putExtra("weblink", currentProduct.getInfo());
+                    detailIntent.putExtra("desc", currentProduct.getDesc());
+                    detailIntent.putExtra("menu", currentProduct.getMenu());
                     itemView.getContext().startActivity(detailIntent);
                 }
             });
