@@ -1,20 +1,26 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class products_page extends AppCompatActivity {
 
-    private ArrayList<Product> productList;
+    private List<Product> productList;
     private RecyclerView rv;
+    private ProductViewModel mProductViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -27,11 +33,22 @@ public class products_page extends AppCompatActivity {
         rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
-        initializeData();
-        initializeAdapter();
+        final ProductListAdaptor pAdapter = new ProductListAdaptor(productList);
+        rv.setAdapter(pAdapter);
+
+        mProductViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
+        mProductViewModel.getAllProducts().observe(this, new Observer<List<Product>>() {
+            @Override
+            public void onChanged(@Nullable final List<Product> products) {
+                // Update the cached copy of the words in the adapter.
+                pAdapter.setProducts(products);
+            }
+        });
+
+        //initializeData();
     }
 
-    // this method creates an Arraylist that has three Product objects
+    // this method creates an list that has three Product objects
     private void initializeData(){
         productList = new ArrayList<>();
         productList.add(new Product("Popeyes", "https://www.popeyes.com/explore-menu", "'Love that Chicken from Popeyes.' \n - Verified User", R.drawable.popeyes));
@@ -52,9 +69,11 @@ public class products_page extends AppCompatActivity {
         EditText productName = findViewById(R.id.newProductInput);
         String name = productName.getText().toString();
 
-        // Add a new product to the list.
-        productList.add(new Product(name, "None","None", 0));
-        // Notify the adapter, that the data has changed.
+        Intent addIntent = new Intent(this, AddProduct.class);
+        addIntent.putExtra("name", name);
+
+        startActivity(addIntent);
+
         rv.getAdapter().notifyItemInserted(pListSize);
         // Scroll to the bottom.
         rv.smoothScrollToPosition(pListSize);

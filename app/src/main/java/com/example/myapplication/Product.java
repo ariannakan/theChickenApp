@@ -1,13 +1,23 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "productTable")
 public class Product {
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "product")
 
     private int imageResource;
     private String name;
     private String desc;
     private String menu;
 
-    public Product(String name, String menu, String desc, int imageResource){
+    public Product(@NonNull String name, String menu, String desc, int imageResource){
         this.name = name;
         this.menu = menu;
         this.desc = desc;

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.ProductViewHolder> {
 
@@ -58,9 +58,9 @@ public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.
 //        }
     }
 
-    private final ArrayList<Product> productList;
+    private List<Product> productList; // cached copy of products
 
-    public ProductListAdaptor(ArrayList<Product> productList) {
+    public ProductListAdaptor(List<Product> productList) {
         //pInflater = LayoutInflater.from(context);
         this.productList = productList;
     }
@@ -73,14 +73,27 @@ public class ProductListAdaptor extends RecyclerView.Adapter<ProductListAdaptor.
 
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
-        holder.productName.setText(productList.get(position).getName());
-        //holder.productInfo.setText(productList.get(position).getInfo());
-        holder.productImage.setImageResource(productList.get(position).getImageResource());
+        if(productList != null){
+            Product current = productList.get(position);
+            holder.productName.setText(current.getName());
+            //holder.productInfo.setText(productList.get(position).getInfo());
+            holder.productImage.setImageResource(current.getImageResource());
+        } else {
+            // covers the case of data not being ready yet
+            holder.productName.setText("No Word");
+        }
+    }
+
+    void setProducts(List<Product> products){
+        productList = products;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        if(productList != null)
+            return productList.size();
+        else return 0;
     }
 
     @Override
