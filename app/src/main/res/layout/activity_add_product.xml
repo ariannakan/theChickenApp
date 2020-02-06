@@ -2,18 +2,109 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/cardview_light_background"
     android:orientation="vertical"
     android:padding="24dp">
 
-    <EditText
-        android:id="@+id/name"
+    <TextView
+        android:id="@+id/name_label"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:inputType="textAutoComplete" />
+        android:layout_width="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/product_name_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="@string/product_name_hint"
+        android:inputType="none|textPersonName|textEmailAddress"
+        app:layout_constraintBaseline_toBaselineOf="@+id/name_label"
+        app:layout_constraintStart_toEndOf="@+id/name_label"  />
+
+    <TextView
+        android:id="@+id/desc_label"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_product_desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_label"/>
+
+    <EditText
+        android:id="@+id/desc_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="Enter a Description"
+        android:inputType="none|textMultiLine"
+        app:layout_constraintBaseline_toBaselineOf="@+id/desc_label"
+        app:layout_constraintStart_toEndOf="@+id/desc_label" />
+
+    <TextView
+        android:id="@+id/imageLink_label"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/imagelink_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/desc_label"/>
+
+    <EditText
+        android:id="@+id/imageLink_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="@string/imageLink_hint"
+        android:inputType="textUri|none"
+        app:layout_constraintBaseline_toBaselineOf="@+id/imageLink_label"
+        app:layout_constraintStart_toEndOf="@+id/imageLink_label" />
+
+    <TextView
+        android:id="@+id/webMenu_label"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/menu_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageLink_label"/>
+
+    <EditText
+        android:id="@+id/webMenu_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="@string/imageLink_hint"
+        android:inputType="textUri|none"
+        app:layout_constraintBaseline_toBaselineOf="@+id/webMenu_label"
+        app:layout_constraintStart_toEndOf="@+id/webMenu_label" />
 
     <Button
         android:id="@+id/button_save"
-        style="@style/button_style"
-        android:text="@string/button_save" />
+        app:srcCompat="@android:drawable/ic_menu_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </LinearLayout>

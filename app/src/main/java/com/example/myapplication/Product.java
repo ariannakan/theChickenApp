@@ -13,6 +13,7 @@ public class Product {
     @ColumnInfo(name = "product")
 
     private int imageResource;
+    private String webImage;
     private String name;
     private String desc;
     private String menu;
@@ -22,6 +23,13 @@ public class Product {
         this.menu = menu;
         this.desc = desc;
         this.imageResource = imageResource;
+    }
+
+    public Product(@NonNull String name, String menu, String desc, String imageResource){
+        this.name = name;
+        this.menu = menu;
+        this.desc = desc;
+        this.webImage = imageResource;
     }
 
     public String getName(){
@@ -50,5 +58,13 @@ public class Product {
 
     public void setImageResource(int image){
         this.imageResource = image;
+    }
+
+    public String getWebImage(){
+        return webImage;
+    }
+
+    public void setWebImage(String image){
+        this.webImage = image;
     }
 }

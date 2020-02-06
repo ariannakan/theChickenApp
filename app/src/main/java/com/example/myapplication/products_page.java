@@ -12,6 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,8 @@ public class products_page extends AppCompatActivity {
     private List<Product> productList;
     private RecyclerView rv;
     private ProductViewModel mProductViewModel;
+
+    public static final int NEW_PRODUCT_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -45,6 +50,19 @@ public class products_page extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton2);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText productName = findViewById(R.id.newProductInput);
+                String name = productName.getText().toString();
+
+                Intent addIntent = new Intent(products_page.this, AddProduct.class);
+                addIntent.putExtra("new_product_name", name);
+                startActivityForResult(addIntent, NEW_PRODUCT_ACTIVITY_REQUEST_CODE);
+            }
+        });
+
         //initializeData();
     }
 
@@ -64,19 +82,30 @@ public class products_page extends AppCompatActivity {
     }
 
     public void addProduct(View view) {
-        int pListSize = productList.size();
-
         EditText productName = findViewById(R.id.newProductInput);
         String name = productName.getText().toString();
 
-        Intent addIntent = new Intent(this, AddProduct.class);
-        addIntent.putExtra("name", name);
 
-        startActivity(addIntent);
+        Intent addIntent = new Intent(products_page.this, AddProduct.class);
+        addIntent.putExtra("new_product_name", name);
+        startActivityForResult(addIntent, NEW_PRODUCT_ACTIVITY_REQUEST_CODE);
+    }
 
-        rv.getAdapter().notifyItemInserted(pListSize);
-        // Scroll to the bottom.
-        rv.smoothScrollToPosition(pListSize);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            String pName = data.getStringExtra(AddProduct.EXTRA_REPLY_NAME);
+            String pDesc = data.getStringExtra(AddProduct.EXTRA_REPLY_DESC);
+            String pImage = data.getStringExtra(AddProduct.EXTRA_REPLY_IMAGE);
+            String pMenu = data.getStringExtra(AddProduct.EXTRA_REPLY_MENU);
+            mProductViewModel.insert(new Product(pName, pMenu, pDesc, pImage));
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
 }
