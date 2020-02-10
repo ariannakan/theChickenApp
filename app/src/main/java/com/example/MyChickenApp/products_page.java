@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.MyChickenApp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

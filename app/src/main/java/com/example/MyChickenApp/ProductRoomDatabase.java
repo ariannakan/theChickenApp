@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.MyChickenApp;
 
 import android.content.Context;
 import android.os.AsyncTask;

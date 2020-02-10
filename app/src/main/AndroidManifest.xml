@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.example.MyChickenApp">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -19,13 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AddProduct"
-            android:parentActivityName=".products_page">
+            android:name="com.example.MyChickenApp.AddProduct"
+            android:parentActivityName="com.example.MyChickenApp.products_page">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".products_page" />
+                android:value="com.example.MyChickenApp.products_page" />
     </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -40,9 +40,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="com.example.MyChickenApp.MapsActivity"
             android:label="@string/title_activity_maps"
-            android:parentActivityName=".products_page">
+            android:parentActivityName="com.example.MyChickenApp.products_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,52 +52,52 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".products_page" />
+                android:value="com.example.MyChickenApp.products_page" />
         </activity>
         <activity
-            android:name=".ProductDetail"
-            android:parentActivityName=".products_page">
+            android:name="com.example.MyChickenApp.ProductDetail"
+            android:parentActivityName="com.example.MyChickenApp.products_page">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".products_page" />
+                android:value="com.example.MyChickenApp.products_page" />
         </activity>
         <activity
-            android:name=".recipes_page"
-            android:parentActivityName=".MainActivity">
+            android:name="com.example.MyChickenApp.recipes_page"
+            android:parentActivityName="com.example.MyChickenApp.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MyChickenApp.MainActivity" />
         </activity>
         <activity
-            android:name=".products_page"
-            android:parentActivityName=".MainActivity">
+            android:name="com.example.MyChickenApp.products_page"
+            android:parentActivityName="com.example.MyChickenApp.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MyChickenApp.MainActivity" />
         </activity>
         <activity
-            android:name=".joke_page"
-            android:parentActivityName=".MainActivity">
+            android:name="com.example.MyChickenApp.joke_page"
+            android:parentActivityName="com.example.MyChickenApp.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MyChickenApp.MainActivity" />
         </activity>
         <activity
-            android:name=".punchline"
-            android:parentActivityName=".MainActivity">
+            android:name="com.example.MyChickenApp.punchline"
+            android:parentActivityName="com.example.MyChickenApp.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MyChickenApp.MainActivity" />
         </activity> <!-- <activity -->
         <!-- android:name=".DisplayMessageActivity" -->
         <!-- android:parentActivityName=".MainActivity"> -->
@@ -106,7 +106,7 @@
         <!-- android:name="android.support.PARENT_ACTIVITY" -->
         <!-- android:value=".MainActivity" /> -->
         <!-- </activity> -->
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.MyChickenApp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

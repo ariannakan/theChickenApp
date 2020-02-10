@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.MyChickenApp;
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;

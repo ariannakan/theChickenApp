@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.MyChickenApp;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
