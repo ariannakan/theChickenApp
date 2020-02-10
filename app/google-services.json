@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1008648814675",
+    "firebase_url": "https://useful-sunset-265507.firebaseio.com",
+    "project_id": "useful-sunset-265507",
+    "storage_bucket": "useful-sunset-265507.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008648814675:android:5e6745dec961af3d5806a6",
+        "android_client_info": {
+          "package_name": "com.example.MyChickenApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008648814675-e7c9ptv40ek4ntturn81df0k0dss5t81.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF-Ekty0tpK4E3KbA98XSnfjfXixV-nEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008648814675-e7c9ptv40ek4ntturn81df0k0dss5t81.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
