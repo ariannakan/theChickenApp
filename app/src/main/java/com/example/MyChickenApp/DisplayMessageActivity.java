@@ -1,10 +1,9 @@
-package com.example.myapplication;
+package com.example.MyChickenApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.service.autofill.TextValueSanitizer;
 import android.widget.TextView;
 
 public class DisplayMessageActivity extends AppCompatActivity {

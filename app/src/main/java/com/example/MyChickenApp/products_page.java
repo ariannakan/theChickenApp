@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.MyChickenApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
